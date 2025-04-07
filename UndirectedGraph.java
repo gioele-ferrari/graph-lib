@@ -13,7 +13,7 @@ public class UndirectedGraph {
     }
 
     /**
-     * Metodo per inizializzare gli attributi interni
+     * Metodo per inizializzare i valori del grafico
      */
     private void initializeGraph() {
         for(int[] node_row : adjacencyMatrix) {
@@ -41,18 +41,18 @@ public class UndirectedGraph {
      * @return true se l'arco è valido, false altrimenti
      */
     private boolean isValidEdge(int from, int to) {
-        return from != to && (adjacencyMatrix[from][to] == 1 || adjacencyMatrix[to][from] == 1);
+        return from != to;
     }
 
     /**
-     * 
-     * @param from
-     * @param to
+     * Metodo per aggiungere un arco al grafo
+     * @param from vertice di partenza
+     * @param to vertice di arrivo
      */
-    public void addEdge(int from, int to) {
+    public void addEdge(int from, int to, int weight) {
         if(isValidVertex(from) && isValidVertex(to) && isValidEdge(from, to)) {
-            adjacencyMatrix[from][to] = 1;
-            adjacencyMatrix[to][from] = 1;
+            adjacencyMatrix[from][to] = weight;
+            adjacencyMatrix[to][from] = weight;
         }
     }
 
@@ -69,12 +69,20 @@ public class UndirectedGraph {
     }
 
     /**
-     * Metodo per aggiungere un vertice al grafo
+     * Metodo per aggiungere un vertice
+     * @param vertex indice del vertice
+     * @param data dati del vertice
      */
     public void addVertex(int vertex, String data) {
         if(isValidVertex(vertex)) {
             this.vertexData[vertex] = data;
         }
+    }
+
+    public String[] getNeighborhood(int vertex) {
+        String[] vertexList = new String[size];
+
+        return vertexList;
     }
 
     /**

@@ -7,10 +7,10 @@ public class Main {
         undirectedGraph.addVertex(2, "C");
         undirectedGraph.addVertex(3, "D");
 
-        undirectedGraph.addEdge(0, 1); // A - B
-        undirectedGraph.addEdge(0, 2); // A - C
-        undirectedGraph.addEdge(1, 2); // B - C
-        undirectedGraph.addEdge(2, 3); // C - D
+        undirectedGraph.addEdge(0, 1, 1); // A - B
+        undirectedGraph.addEdge(0, 2, 1); // A - C
+        undirectedGraph.addEdge(1, 2, 1); // B - C
+        undirectedGraph.addEdge(2, 3, 1); // C - D
 
         undirectedGraph.printGraph();
     }
