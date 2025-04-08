@@ -46,16 +46,6 @@ public class UndirectedGraph {
         return from != to;
     }
 
-    private int getVertexIndex(String data) {
-        for (int i = 0; i < vertexData.length; i++) {
-            if (vertexData[i].compareTo(data) == 0) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-
     /**
      * Metodo per aggiungere un arco al grafo
      * @param from vertice di partenza
@@ -96,17 +86,23 @@ public class UndirectedGraph {
      * @param vertex 
      * @return
      */
-    public String[] getNeighborhood(int vertex) {
-        List<String> neighbors = new ArrayList<>();
+    public int[] getNeighbors(int vertex) {
+        List<Integer> neighbors = new ArrayList<>();
     
         for (int i = 0; i < adjacencyMatrix.length; i++) {
             if (adjacencyMatrix[vertex][i] != 0) {
-                neighbors.add(vertexData[i]);
+                neighbors.add(i);
             }
         }
     
-        return neighbors.toArray(new String[0]);
+        int[] result = new int[neighbors.size()];
+        for (int i = 0; i < neighbors.size(); i++) {
+            result[i] = neighbors.get(i);
+        }
+    
+        return result;
     }
+    
 
     /**
      * Metodo per stampare il grafo
@@ -121,7 +117,10 @@ public class UndirectedGraph {
     }
 
     
-
+    /**
+     * Metodo per esplorare con l'algoritmo BFS il grafo
+     * @param vertexSource vertice sorgente da cui partire
+     */
     public void bfs(int vertexSource) {
         List<Integer> queue = new ArrayList<>();
         boolean[] visited = new boolean[size];
@@ -133,12 +132,10 @@ public class UndirectedGraph {
             int currentVertex = queue.remove(0);
             System.out.println(vertexData[currentVertex]);
     
-            String[] neighbors = getNeighborhood(currentVertex);
-            for (String neighbor : neighbors) {
-                int vertexIndex = getVertexIndex(neighbor);
-                if (vertexIndex != -1 && !visited[vertexIndex]) {
-                    queue.add(vertexIndex);
-                    visited[vertexIndex] = true;
+            for (int neighbor : getNeighbors(currentVertex)) {
+                if (!visited[neighbor]) {
+                    queue.add(neighbor);
+                    visited[neighbor] = true;
                 }
             }
         }
