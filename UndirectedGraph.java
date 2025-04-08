@@ -46,6 +46,16 @@ public class UndirectedGraph {
         return from != to;
     }
 
+    private int getVertexIndex(String data) {
+        for (int i = 0; i < vertexData.length; i++) {
+            if (vertexData[i].compareTo(data) == 0) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
     /**
      * Metodo per aggiungere un arco al grafo
      * @param from vertice di partenza
@@ -90,7 +100,7 @@ public class UndirectedGraph {
         List<String> neighbors = new ArrayList<>();
     
         for (int i = 0; i < adjacencyMatrix.length; i++) {
-            if (adjacencyMatrix[vertex][i] == 1) {
+            if (adjacencyMatrix[vertex][i] != 0) {
                 neighbors.add(vertexData[i]);
             }
         }
@@ -109,4 +119,29 @@ public class UndirectedGraph {
             System.out.println("");
         }
     }
+
+    
+
+    public void bfs(int vertexSource) {
+        List<Integer> queue = new ArrayList<>();
+        boolean[] visited = new boolean[size];
+    
+        queue.add(vertexSource);
+        visited[vertexSource] = true;
+    
+        while (!queue.isEmpty()) {
+            int currentVertex = queue.remove(0);
+            System.out.println(vertexData[currentVertex]);
+    
+            String[] neighbors = getNeighborhood(currentVertex);
+            for (String neighbor : neighbors) {
+                int vertexIndex = getVertexIndex(neighbor);
+                if (vertexIndex != -1 && !visited[vertexIndex]) {
+                    queue.add(vertexIndex);
+                    visited[vertexIndex] = true;
+                }
+            }
+        }
+    }
+    
 }

@@ -14,5 +14,7 @@ public class Main {
         undirectedGraph.addEdge(2, 3, 1); // C - D
 
         undirectedGraph.printGraph();
+
+        undirectedGraph.bfs(1);
     }
 }
