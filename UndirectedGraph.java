@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class UndirectedGraph {
     private int[][] adjacencyMatrix;
@@ -79,10 +81,21 @@ public class UndirectedGraph {
         }
     }
 
+    /**
+     * Metodo per ottenere i vicini di un vertice
+     * @param vertex 
+     * @return
+     */
     public String[] getNeighborhood(int vertex) {
-        String[] vertexList = new String[size];
-
-        return vertexList;
+        List<String> neighbors = new ArrayList<>();
+    
+        for (int i = 0; i < adjacencyMatrix.length; i++) {
+            if (adjacencyMatrix[vertex][i] == 1) {
+                neighbors.add(vertexData[i]);
+            }
+        }
+    
+        return neighbors.toArray(new String[0]);
     }
 
     /**

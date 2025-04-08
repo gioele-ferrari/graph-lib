@@ -9,6 +9,7 @@ public class Main {
 
         undirectedGraph.addEdge(0, 1, 1); // A - B
         undirectedGraph.addEdge(0, 2, 1); // A - C
+        undirectedGraph.addEdge(0, 3, 1); // A - D
         undirectedGraph.addEdge(1, 2, 1); // B - C
         undirectedGraph.addEdge(2, 3, 1); // C - D
 
