@@ -1,7 +1,8 @@
+import src.UndirectedGraph;
+
 public class Main {
     public static void main(String[] args) {
         UndirectedGraph undirectedGraph = new UndirectedGraph(4);
-
         undirectedGraph.addVertex(0, "A");
         undirectedGraph.addVertex(1, "B");
         undirectedGraph.addVertex(2, "C");
@@ -15,6 +16,5 @@ public class Main {
 
         undirectedGraph.printGraph();
 
-        undirectedGraph.bfs(1);
     }
 }

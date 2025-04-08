@@ -1,4 +1,5 @@
 #!/bin/bash
 
-javac Main.java
-java Main
+mkdir -p out
+javac -d out Main.java
+java -cp out Main
